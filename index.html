@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ENTWURF: Solange Impressum und Datenschutz nicht ausgefüllt sind, darf die Seite
+     nicht in Suchmaschinen auftauchen. Diese Zeile vor dem Livegang löschen. -->
+<meta name="robots" content="noindex">
+<title>re:school — Supervision und Coaching für Schulen und Kindergärten</title>
+<meta name="description" content="Supervision und Coaching für Schulen und Kindergärten: Gruppensupervision, Teamsupervision und Coaching für Führungskräfte.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  /* ---------- Schriften, selbst gehostet ---------- */
+  @font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 400; font-display: swap;
+    src: url(schriften/schibsted-grotesk-400.woff2) format("woff2"); }
+  @font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 600; font-display: swap;
+    src: url(schriften/schibsted-grotesk-600.woff2) format("woff2"); }
+  @font-face { font-family: "Source Serif 4"; font-style: normal; font-weight: 400; font-display: swap;
+    src: url(schriften/source-serif-4-400.woff2) format("woff2"); }
+  @font-face { font-family: "Source Serif 4"; font-style: normal; font-weight: 600; font-display: swap;
+    src: url(schriften/source-serif-4-600.woff2) format("woff2"); }
+
+  /* ---------- Marke ---------- */
+  :root {
+    --paper:    #ECEFEE;
+    --panel:    #F6F8F7;
+    --ink:      #151E27;
+    --ink-soft: #46545F;
+    --rule:     #D3D9D7;
+    --akzent:   #0E6E66;
+    --f-display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --f-body:    "Source Serif 4", Georgia, "Times New Roman", serif;
+    --wrap: 720px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:    #101519;
+      --panel:    #171E23;
+      --ink:      #E6EAE8;
+      --ink-soft: #A3AEB3;
+      --rule:     #2A343A;
+      --akzent:   #3FA79B;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 18px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+  @media (min-width: 560px) { .wrap { padding: 0 32px; } }
+
+  h1, h2, h3, h4 { font-family: var(--f-display); font-weight: 600; margin: 0; text-wrap: balance; }
+  h2 { font-size: clamp(25px, 4.4vw, 31px); line-height: 1.16; letter-spacing: -.018em; }
+  h3 { font-size: clamp(20px, 3.4vw, 23px); line-height: 1.22; letter-spacing: -.012em; }
+  h4 { font-size: 13px; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-soft); }
+  p { margin: 0; }
+  a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 1px; }
+
+  /* ---------- Sprungmarke ---------- */
+  .sprung {
+    position: absolute; left: -9999px;
+    background: var(--ink); color: var(--paper);
+    padding: 12px 18px; font-family: var(--f-display); text-decoration: none;
+  }
+  .sprung:focus { left: 12px; top: 12px; z-index: 10; }
+
+  /* ---------- Wortmarke ---------- */
+  .wortmarke { display: block; width: 100%; height: auto; }
+  .wortmarke .ink { fill: var(--ink); }
+  .wortmarke .dot { fill: var(--akzent); }
+  .wortmarke.einfarbig .ink, .wortmarke.einfarbig .dot { fill: var(--ink); }
+
+  /* ---------- Einstieg ---------- */
+  .einstieg { padding: 54px 0 0; }
+  .einstieg h1 { max-width: 340px; margin: 0; }
+  .claim {
+    font-family: var(--f-display); font-size: 15px; color: var(--ink-soft);
+    margin-top: 9px; max-width: 340px;
+  }
+  .lede { font-size: 20px; line-height: 1.55; margin-top: 34px; }
+
+  .cta-block { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+  .cta, .cta-aus {
+    display: inline-block; font-family: var(--f-display); font-size: 17px; font-weight: 600;
+    padding: 13px 26px; border: 1px solid var(--ink);
+  }
+  .cta { background: var(--ink); color: var(--paper); text-decoration: none; }
+  .cta:hover { background: transparent; color: var(--ink); }
+  /* Kein Link, solange keine Adresse da ist: bewusst nicht anklickbar und nicht fokussierbar. */
+  .cta-aus { background: transparent; color: var(--ink-soft); border-style: dashed; }
+  .cta-hinweis { font-family: var(--f-display); font-size: 15.5px; color: var(--ink-soft); }
+
+  /* ---------- Abschnitte ---------- */
+  section { margin-top: 68px; }
+  section > h2 { padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+
+  .angebot { margin-top: 40px; }
+  .angebot > p { margin-top: 12px; }
+  .angebot h4 { margin: 26px 0 8px; }
+  .angebot ul { margin: 0; padding-left: 1.15em; }
+  .angebot li { margin-bottom: 2px; }
+
+  dl { margin: 0; }
+  dl div { display: grid; gap: 0 18px; padding: 7px 0; border-bottom: 1px solid var(--rule); }
+  @media (min-width: 560px) { dl div { grid-template-columns: 168px minmax(0, 1fr); } }
+  dt { font-family: var(--f-display); font-size: 15px; font-weight: 600; }
+  dd { margin: 0; color: var(--ink-soft); font-size: 16.5px; }
+
+  .kosten { margin-top: 18px; font-size: 16.5px; }
+  .kosten strong { font-family: var(--f-display); font-size: 15px; }
+
+  .hinweis {
+    margin-top: 24px; padding: 18px 20px;
+    background: var(--panel); border: 1px solid var(--rule);
+    font-size: 16.5px; line-height: 1.55;
+  }
+
+  .haltung { list-style: none; margin: 34px 0 0; padding: 0; display: flex; flex-direction: column; gap: 22px; }
+  .haltung strong { font-family: var(--f-display); font-size: 17px; display: block; }
+
+  .person { margin-top: 40px; }
+  .person .rolle { font-family: var(--f-display); font-size: 15.5px; color: var(--ink-soft); margin-top: 6px; }
+  .person p + p { margin-top: 16px; }
+
+  /* ---------- Offene Stellen ---------- */
+  .offen {
+    display: inline-block; font-family: var(--f-display); font-size: 14px; font-weight: 400;
+    color: var(--ink-soft); border: 1px dashed var(--rule); padding: 5px 11px;
+    background: var(--panel);
+  }
+  /* Kästchen in CSS gezeichnet, damit es auf jedem System gleich aussieht. */
+  .offen::before {
+    content: ""; display: inline-block; width: 7px; height: 7px;
+    border: 1px solid currentColor; margin-right: 9px; vertical-align: 1px;
+  }
+  .offen-zeile { margin-top: 14px; }
+
+  .kontakt { margin-top: 30px; }
+  .kontakt dd { padding-top: 2px; }
+
+  /* ---------- Fuß ---------- */
+  footer { margin-top: 84px; padding: 30px 0 48px; border-top: 1px solid var(--rule); }
+  footer .marke-klein { max-width: 132px; }
+  footer nav { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px 26px; font-family: var(--f-display); font-size: 15.5px; }
+</style>
+</head>
+<body>
+
+<a class="sprung" href="#inhalt">Zum Inhalt springen</a>
+
+<div class="wrap">
+<main id="inhalt">
+
+  <header class="einstieg">
+    <h1><svg class="wortmarke" viewBox="0 0 8440.6 1526.0" role="img" aria-label="re:school">
+          <g transform="translate(-150.0 1500.0) scale(1 -1)">
+            <path class="ink" d="M150.0 0.0V1080.0H387.0V842.0L378.0 872.0Q428.0 989.0 522.0 1047.0Q616.0 1105.0 722.0 1105.0Q752.0 1105.0 782.5 1100.0Q813.0 1095.0 841.0 1083.0L819.0 866.0Q758.0 884.0 700.0 884.0Q657.0 884.0 604.5 868.5Q552.0 853.0 505.0 811.0Q458.0 769.0 427.5 690.5Q397.0 612.0 397.0 487.0V0.0Z M1442.3 -25.0Q1285.3 -25.0 1164.3 44.0Q1043.3 113.0 974.3 240.0Q905.3 367.0 905.3 540.0Q905.3 713.0 973.3 840.0Q1041.3 967.0 1161.3 1036.0Q1281.3 1105.0 1438.3 1105.0Q1526.3 1105.0 1615.8 1078.0Q1705.3 1051.0 1779.8 982.5Q1854.3 914.0 1900.3 793.5Q1946.3 673.0 1946.3 488.0H1064.3V645.0H1726.3L1688.3 588.0Q1682.3 709.0 1646.8 782.5Q1611.3 856.0 1555.8 889.5Q1500.3 923.0 1432.3 923.0Q1346.3 923.0 1287.3 876.5Q1228.3 830.0 1197.8 743.5Q1167.3 657.0 1167.3 539.0Q1167.3 363.0 1236.3 263.5Q1305.3 164.0 1440.3 164.0Q1532.3 164.0 1597.3 211.0Q1662.3 258.0 1694.3 351.0L1924.3 287.0Q1885.3 182.0 1813.3 113.0Q1741.3 44.0 1645.3 9.5Q1549.3 -25.0 1442.3 -25.0Z M3020.0 -25.0Q2900.0 -25.0 2796.5 11.5Q2693.0 48.0 2623.5 124.5Q2554.0 201.0 2533.0 321.0L2768.0 367.0Q2778.0 262.0 2841.5 210.0Q2905.0 158.0 3011.0 158.0Q3116.0 158.0 3171.5 204.0Q3227.0 250.0 3227.0 314.0Q3227.0 370.0 3185.5 407.0Q3144.0 444.0 3053.0 459.0L2942.0 478.0Q2886.0 488.0 2824.0 504.5Q2762.0 521.0 2707.0 552.5Q2652.0 584.0 2617.5 638.5Q2583.0 693.0 2583.0 777.0Q2583.0 884.0 2640.0 957.0Q2697.0 1030.0 2794.5 1067.5Q2892.0 1105.0 3014.0 1105.0Q3133.0 1105.0 3227.5 1069.5Q3322.0 1034.0 3384.5 966.0Q3447.0 898.0 3466.0 799.0L3228.0 751.0Q3221.0 799.0 3199.0 838.5Q3177.0 878.0 3133.5 901.5Q3090.0 925.0 3019.0 925.0Q2936.0 925.0 2882.0 891.5Q2828.0 858.0 2828.0 796.0Q2828.0 755.0 2852.5 728.5Q2877.0 702.0 2922.0 685.0Q2967.0 668.0 3028.0 656.0L3148.0 633.0Q3233.0 619.0 3308.0 584.5Q3383.0 550.0 3429.5 488.0Q3476.0 426.0 3476.0 325.0Q3476.0 213.0 3417.0 134.5Q3358.0 56.0 3255.0 15.5Q3152.0 -25.0 3020.0 -25.0Z M4102.3 -25.0Q3938.3 -25.0 3819.3 44.0Q3700.3 113.0 3635.8 240.0Q3571.3 367.0 3571.3 540.0Q3571.3 714.0 3635.8 841.0Q3700.3 968.0 3819.3 1036.5Q3938.3 1105.0 4101.3 1105.0Q4220.3 1105.0 4320.3 1062.0Q4420.3 1019.0 4490.3 935.0Q4560.3 851.0 4588.3 729.0L4348.3 675.0Q4324.3 794.0 4260.8 855.5Q4197.3 917.0 4100.3 917.0Q3968.3 917.0 3901.3 815.0Q3834.3 713.0 3834.3 538.0Q3834.3 363.0 3900.8 263.0Q3967.3 163.0 4100.3 163.0Q4195.3 163.0 4259.3 220.0Q4323.3 277.0 4350.3 390.0L4584.3 340.0Q4562.3 248.0 4516.3 179.5Q4470.3 111.0 4405.8 65.5Q4341.3 20.0 4264.3 -2.5Q4187.3 -25.0 4102.3 -25.0Z M4734.6 0.0V1500.0H4981.6V826.0L4964.6 871.0Q5010.6 978.0 5102.1 1041.5Q5193.6 1105.0 5324.6 1105.0Q5445.6 1105.0 5526.6 1050.5Q5607.6 996.0 5649.1 897.5Q5690.6 799.0 5690.6 667.0V0.0H5442.6V640.0Q5442.6 774.0 5401.1 843.5Q5359.6 913.0 5249.6 913.0Q5123.6 913.0 5052.6 820.0Q4981.6 727.0 4981.6 541.0V0.0Z M6338.9 -25.0Q6179.9 -25.0 6058.4 46.5Q5936.9 118.0 5869.4 245.5Q5801.9 373.0 5801.9 540.0Q5801.9 707.0 5869.4 834.5Q5936.9 962.0 6058.4 1033.5Q6179.9 1105.0 6338.9 1105.0Q6497.9 1105.0 6618.9 1033.5Q6739.9 962.0 6807.9 834.5Q6875.9 707.0 6875.9 540.0Q6875.9 373.0 6807.9 245.5Q6739.9 118.0 6618.4 46.5Q6496.9 -25.0 6338.9 -25.0ZM6338.9 163.0Q6465.9 163.0 6539.9 264.5Q6613.9 366.0 6613.9 540.0Q6613.9 715.0 6539.9 816.0Q6465.9 917.0 6338.9 917.0Q6210.9 917.0 6137.4 816.0Q6063.9 715.0 6063.9 540.0Q6063.9 366.0 6137.4 264.5Q6210.9 163.0 6338.9 163.0Z M7507.2 -25.0Q7348.2 -25.0 7226.7 46.5Q7105.2 118.0 7037.7 245.5Q6970.2 373.0 6970.2 540.0Q6970.2 707.0 7037.7 834.5Q7105.2 962.0 7226.7 1033.5Q7348.2 1105.0 7507.2 1105.0Q7666.2 1105.0 7787.2 1033.5Q7908.2 962.0 7976.2 834.5Q8044.2 707.0 8044.2 540.0Q8044.2 373.0 7976.2 245.5Q7908.2 118.0 7786.7 46.5Q7665.2 -25.0 7507.2 -25.0ZM7507.2 163.0Q7634.2 163.0 7708.2 264.5Q7782.2 366.0 7782.2 540.0Q7782.2 715.0 7708.2 816.0Q7634.2 917.0 7507.2 917.0Q7379.2 917.0 7305.7 816.0Q7232.2 715.0 7232.2 540.0Q7232.2 366.0 7305.7 264.5Q7379.2 163.0 7507.2 163.0Z M8416.6 0.0Q8317.6 0.0 8259.6 52.5Q8201.6 105.0 8201.6 197.0V1500.0H8449.6V244.0Q8449.6 210.0 8459.1 199.0Q8468.6 188.0 8499.6 188.0H8590.6V0.0Z"/>
+            <path class="dot" d="M2239.6 -26.0Q2147.6 -26.0 2090.6 31.0Q2033.6 88.0 2033.6 180.0Q2033.6 272.0 2090.6 328.5Q2147.6 385.0 2239.6 385.0Q2331.6 385.0 2388.1 328.5Q2444.6 272.0 2444.6 180.0Q2444.6 88.0 2388.1 31.0Q2331.6 -26.0 2239.6 -26.0ZM2239.6 695.0Q2147.6 695.0 2090.6 752.0Q2033.6 809.0 2033.6 901.0Q2033.6 993.0 2090.6 1049.5Q2147.6 1106.0 2239.6 1106.0Q2331.6 1106.0 2388.1 1049.5Q2444.6 993.0 2444.6 901.0Q2444.6 809.0 2388.1 752.0Q2331.6 695.0 2239.6 695.0Z"/>
+          </g>
+        </svg></h1>
+    <p class="claim">reflect. rethink. reorganise.</p>
+    <p class="lede">Supervision und Coaching für Schulen und Kindergärten: für Einrichtungen, die Gruppen- oder Teamsupervision buchen möchten, und für Direktor:innen, Pädagogische Leitungen und mittleres Management, die Coaching suchen. Wir begleiten Sie dabei, den Arbeitsalltag mit Abstand zu betrachten, gemeinsam zu reflektieren und neue Handlungsmöglichkeiten zu entwickeln.</p>
+    <div class="cta-block">
+      <span class="cta-aus">Termin anfragen</span>
+      <span class="offen">E-Mail-Adresse für die Anfrage — wird nachgereicht</span>
+      <p class="cta-hinweis">Das Erstgespräch ist kostenlos.</p>
+    </div>
+  </header>
+
+  <section id="angebote">
+    <h2>Angebote</h2>
+
+    <article class="angebot">
+      <h3>Gruppensupervision</h3>
+      <p>Der pädagogische Alltag ist fordernd und oft komplex. In der systemischen Gruppensupervision bringen Pädagog:innen eigene Anliegen ein: Was beschäftigt Sie gerade? Was fordert Sie? Was läuft gut? Wir liefern keine fertigen Antworten, sondern schaffen einen vertraulichen, gut moderierten Rahmen, in dem im Austausch mit Kolleg:innen neue Blickwinkel und konkrete Lösungsideen entstehen.</p>
+
+      <h4>Für wen</h4>
+      <ul>
+        <li>Lehrkräfte</li>
+        <li>Kindergartenpädagog:innen</li>
+      </ul>
+
+      <h4>Format</h4>
+      <dl>
+        <div><dt>Zusammensetzung</dt><dd>Pädagog:innen eines Standorts mit eigenen Anliegen</dd></div>
+        <div><dt>Gruppengröße</dt><dd>3–8 Personen</dd></div>
+        <div><dt>Dauer je Einheit</dt><dd>90 Minuten</dd></div>
+        <div><dt>Rhythmus</dt><dd>nach Bedarf</dd></div>
+        <div><dt>Ort</dt><dd>vor Ort oder nach Wunsch extern</dd></div>
+      </dl>
+
+      <p class="kosten"><strong>Kosten:</strong> Erstgespräch kostenlos, danach auf Anfrage</p>
+
+      <p class="hinweis">Einzelne Pädagog:innen können sich außerdem zur standortübergreifenden kostenlosen Gruppensupervision im Education Lab anmelden.<br>
+        <span class="offen offen-zeile">Link zur Anmeldung Education Lab — wird nachgereicht</span></p>
+    </article>
+
+    <article class="angebot">
+      <h3>Teamsupervision</h3>
+      <p>Teamsupervision richtet sich an feste Teams einer Schule oder eines Kindergartens. Im Mittelpunkt stehen konkrete Fälle aus dem Arbeitsalltag und die Zusammenarbeit im Team: Rollen, Zuständigkeiten, Konflikte und Veränderungen. Die Leitung beauftragt die Supervision und ist bei der Auftragsklärung dabei. Betreffen Themen ihre Zuständigkeiten, nimmt sie auch an den Sitzungen teil.</p>
+
+      <h4>Für wen</h4>
+      <ul>
+        <li>Teams in Schulen und Kindergärten</li>
+      </ul>
+
+      <h4>Format</h4>
+      <dl>
+        <div><dt>Gruppengröße</dt><dd>bis ca. 12 Personen, bei größeren Teams kommen wir zu zweit</dd></div>
+        <div><dt>Dauer je Einheit</dt><dd>90–120 Minuten</dd></div>
+        <div><dt>Rhythmus</dt><dd>nach Bedarf</dd></div>
+        <div><dt>Ort</dt><dd>vor Ort oder nach Wunsch extern</dd></div>
+      </dl>
+
+      <p class="kosten"><strong>Kosten:</strong> Erstgespräch kostenlos, danach auf Anfrage</p>
+    </article>
+
+    <article class="angebot">
+      <h3>Coaching für Führungskräfte</h3>
+      <p>Führung in Schule und Kindergarten heißt oft, viele Erwartungen gleichzeitig zu halten. Im Einzelcoaching arbeiten Sie an Ihrer Führungsrolle: in wenigen Sitzungen zu einem konkreten Anliegen, etwa einem schwierigen Gespräch, oder als längere Begleitung beim Einstieg in eine neue Funktion. Sie bestimmen die Themen, wir strukturieren den Prozess. Inhalte bleiben vertraulich, auch gegenüber Auftraggeber:innen.</p>
+
+      <h4>Für wen</h4>
+      <ul>
+        <li>Direktor:innen</li>
+        <li>Pädagogische Leitungen</li>
+        <li>Kindergartenleitungen</li>
+        <li>Koordinator:innen</li>
+        <li>Fachbereichs- und Abteilungsleitungen</li>
+      </ul>
+
+      <h4>Format</h4>
+      <dl>
+        <div><dt>Setting</dt><dd>Einzelcoaching mit Katharina Obererlacher oder Robin Heinecke</dd></div>
+        <div><dt>Formen</dt><dd>Kurzcoaching zu einem Anliegen oder Begleitung in einer neuen Rolle</dd></div>
+        <div><dt>Dauer je Einheit</dt><dd>45 oder 90 Minuten</dd></div>
+        <div><dt>Rhythmus</dt><dd>nach Bedarf</dd></div>
+        <div><dt>Ort</dt><dd>vor Ort, extern (z. B. im Education Lab) oder online</dd></div>
+      </dl>
+
+      <p class="kosten"><strong>Kosten:</strong> Erstgespräch kostenlos, danach auf Anfrage</p>
+    </article>
+  </section>
+
+  <section id="haltung">
+    <h2>Haltung</h2>
+    <ul class="haltung">
+      <li><strong>Aus Bildungseinrichtungen, für Bildungseinrichtungen</strong>Wir kennen den Alltag an Bildungseinrichtungen aus erster Hand.</li>
+      <li><strong>Keine fertigen Antworten</strong>Sie sind Expert:in für Ihren Alltag und entscheiden selbst, was Sie mitnehmen.</li>
+      <li><strong>Supervision als Normalfall</strong>Belastungen im Alltag von Bildungseinrichtungen sollen keine Privatsache bleiben.</li>
+    </ul>
+  </section>
+
+  <section id="personen">
+    <h2>Personen</h2>
+
+    <article class="person">
+      <h3>Robin Heinecke, BA MA</h3>
+      <p class="rolle">Supervisor, Coach und Organisationsentwickler in Ausbildung unter Supervision (i.A.u.S.)</p>
+      <p>Seit 2017 unterrichte ich an einer Wiener Mittelschule Englisch, Geographie/Wirtschaftsbildung und Digitale Grundbildung, die ersten zwei Jahre als Fellow von Teach For Austria. Ich habe Internationale Entwicklung an der Universität Wien studiert und bin in Mentoring und Schulcoaching ausgebildet. Supervision ist für mich der Ort, an dem der Arbeitsalltag aus der Distanz sichtbar wird und eigene Ressourcen aktiviert werden. Ich sehe jede Person als Expert:in für ihren Arbeitsalltag, höre neugierig zu und frage wertschätzend nach; womit sie zurück in den Alltag geht, entscheidet sie selbst. Mich treibt an, dass Belastungen im Schulalltag keine Privatsache bleiben, sondern einen verlässlichen Raum für Reflexion bekommen.</p>
+      <p><span class="offen">Foto Robin Heinecke — wird nachgereicht</span></p>
+    </article>
+
+    <article class="person">
+      <h3>Mag.a Katharina Obererlacher</h3>
+      <p class="rolle">Supervisorin, Coach und Organisationsentwicklerin in Ausbildung unter Supervision (i.A.u.S.)</p>
+      <p>Ich bin ausgebildete Pädagogin für Französisch, Mathematik sowie Bewegung und Sport, mit Zusatzausbildungen in DaF/DaZ und als Boulder- und Sportkletterlehrerin. Nach mehreren Jahren Unterricht an einer Wiener Mittelschule und einer AHS, auch als Qualitätsschulkoordinatorin, arbeite ich heute im Bildungsmanagement. Supervision erlebe ich selbst als wertvolle Ressource: einen Ort, um mit Abstand auf das eigene Tun zu blicken und sich immer wieder von Lösungs-Blumensträußen überraschen zu lassen. Ich begleite wertschätzend und schaffe einen sicheren, mutigen Raum, in dem frei von Wertung experimentiert werden darf; was richtig oder machbar ist, entscheidet allein die Person selbst. Wer mit Kindern und Jugendlichen arbeitet, hat einen der verantwortungsvollsten Jobs unserer Gesellschaft und verdient regelmäßige professionelle Unterstützung.</p>
+      <p><span class="offen">Foto Katharina Obererlacher — wird nachgereicht</span></p>
+    </article>
+  </section>
+
+  <section id="kontakt">
+    <h2>Kontakt</h2>
+    <dl class="kontakt">
+      <div><dt>E-Mail</dt><dd><span class="offen">wird nachgereicht</span></dd></div>
+      <div><dt>Telefon</dt><dd><span class="offen">wird nachgereicht</span></dd></div>
+      <div><dt>Weitere Kanäle</dt><dd><span class="offen">wird nachgereicht</span></dd></div>
+    </dl>
+  </section>
+
+</main>
+
+<footer>
+  <div class="marke-klein"><svg class="wortmarke einfarbig" viewBox="0 0 8440.6 1526.0" role="img" aria-label="re:school">
+      <g transform="translate(-150.0 1500.0) scale(1 -1)">
+        <path class="ink" d="M150.0 0.0V1080.0H387.0V842.0L378.0 872.0Q428.0 989.0 522.0 1047.0Q616.0 1105.0 722.0 1105.0Q752.0 1105.0 782.5 1100.0Q813.0 1095.0 841.0 1083.0L819.0 866.0Q758.0 884.0 700.0 884.0Q657.0 884.0 604.5 868.5Q552.0 853.0 505.0 811.0Q458.0 769.0 427.5 690.5Q397.0 612.0 397.0 487.0V0.0Z M1442.3 -25.0Q1285.3 -25.0 1164.3 44.0Q1043.3 113.0 974.3 240.0Q905.3 367.0 905.3 540.0Q905.3 713.0 973.3 840.0Q1041.3 967.0 1161.3 1036.0Q1281.3 1105.0 1438.3 1105.0Q1526.3 1105.0 1615.8 1078.0Q1705.3 1051.0 1779.8 982.5Q1854.3 914.0 1900.3 793.5Q1946.3 673.0 1946.3 488.0H1064.3V645.0H1726.3L1688.3 588.0Q1682.3 709.0 1646.8 782.5Q1611.3 856.0 1555.8 889.5Q1500.3 923.0 1432.3 923.0Q1346.3 923.0 1287.3 876.5Q1228.3 830.0 1197.8 743.5Q1167.3 657.0 1167.3 539.0Q1167.3 363.0 1236.3 263.5Q1305.3 164.0 1440.3 164.0Q1532.3 164.0 1597.3 211.0Q1662.3 258.0 1694.3 351.0L1924.3 287.0Q1885.3 182.0 1813.3 113.0Q1741.3 44.0 1645.3 9.5Q1549.3 -25.0 1442.3 -25.0Z M3020.0 -25.0Q2900.0 -25.0 2796.5 11.5Q2693.0 48.0 2623.5 124.5Q2554.0 201.0 2533.0 321.0L2768.0 367.0Q2778.0 262.0 2841.5 210.0Q2905.0 158.0 3011.0 158.0Q3116.0 158.0 3171.5 204.0Q3227.0 250.0 3227.0 314.0Q3227.0 370.0 3185.5 407.0Q3144.0 444.0 3053.0 459.0L2942.0 478.0Q2886.0 488.0 2824.0 504.5Q2762.0 521.0 2707.0 552.5Q2652.0 584.0 2617.5 638.5Q2583.0 693.0 2583.0 777.0Q2583.0 884.0 2640.0 957.0Q2697.0 1030.0 2794.5 1067.5Q2892.0 1105.0 3014.0 1105.0Q3133.0 1105.0 3227.5 1069.5Q3322.0 1034.0 3384.5 966.0Q3447.0 898.0 3466.0 799.0L3228.0 751.0Q3221.0 799.0 3199.0 838.5Q3177.0 878.0 3133.5 901.5Q3090.0 925.0 3019.0 925.0Q2936.0 925.0 2882.0 891.5Q2828.0 858.0 2828.0 796.0Q2828.0 755.0 2852.5 728.5Q2877.0 702.0 2922.0 685.0Q2967.0 668.0 3028.0 656.0L3148.0 633.0Q3233.0 619.0 3308.0 584.5Q3383.0 550.0 3429.5 488.0Q3476.0 426.0 3476.0 325.0Q3476.0 213.0 3417.0 134.5Q3358.0 56.0 3255.0 15.5Q3152.0 -25.0 3020.0 -25.0Z M4102.3 -25.0Q3938.3 -25.0 3819.3 44.0Q3700.3 113.0 3635.8 240.0Q3571.3 367.0 3571.3 540.0Q3571.3 714.0 3635.8 841.0Q3700.3 968.0 3819.3 1036.5Q3938.3 1105.0 4101.3 1105.0Q4220.3 1105.0 4320.3 1062.0Q4420.3 1019.0 4490.3 935.0Q4560.3 851.0 4588.3 729.0L4348.3 675.0Q4324.3 794.0 4260.8 855.5Q4197.3 917.0 4100.3 917.0Q3968.3 917.0 3901.3 815.0Q3834.3 713.0 3834.3 538.0Q3834.3 363.0 3900.8 263.0Q3967.3 163.0 4100.3 163.0Q4195.3 163.0 4259.3 220.0Q4323.3 277.0 4350.3 390.0L4584.3 340.0Q4562.3 248.0 4516.3 179.5Q4470.3 111.0 4405.8 65.5Q4341.3 20.0 4264.3 -2.5Q4187.3 -25.0 4102.3 -25.0Z M4734.6 0.0V1500.0H4981.6V826.0L4964.6 871.0Q5010.6 978.0 5102.1 1041.5Q5193.6 1105.0 5324.6 1105.0Q5445.6 1105.0 5526.6 1050.5Q5607.6 996.0 5649.1 897.5Q5690.6 799.0 5690.6 667.0V0.0H5442.6V640.0Q5442.6 774.0 5401.1 843.5Q5359.6 913.0 5249.6 913.0Q5123.6 913.0 5052.6 820.0Q4981.6 727.0 4981.6 541.0V0.0Z M6338.9 -25.0Q6179.9 -25.0 6058.4 46.5Q5936.9 118.0 5869.4 245.5Q5801.9 373.0 5801.9 540.0Q5801.9 707.0 5869.4 834.5Q5936.9 962.0 6058.4 1033.5Q6179.9 1105.0 6338.9 1105.0Q6497.9 1105.0 6618.9 1033.5Q6739.9 962.0 6807.9 834.5Q6875.9 707.0 6875.9 540.0Q6875.9 373.0 6807.9 245.5Q6739.9 118.0 6618.4 46.5Q6496.9 -25.0 6338.9 -25.0ZM6338.9 163.0Q6465.9 163.0 6539.9 264.5Q6613.9 366.0 6613.9 540.0Q6613.9 715.0 6539.9 816.0Q6465.9 917.0 6338.9 917.0Q6210.9 917.0 6137.4 816.0Q6063.9 715.0 6063.9 540.0Q6063.9 366.0 6137.4 264.5Q6210.9 163.0 6338.9 163.0Z M7507.2 -25.0Q7348.2 -25.0 7226.7 46.5Q7105.2 118.0 7037.7 245.5Q6970.2 373.0 6970.2 540.0Q6970.2 707.0 7037.7 834.5Q7105.2 962.0 7226.7 1033.5Q7348.2 1105.0 7507.2 1105.0Q7666.2 1105.0 7787.2 1033.5Q7908.2 962.0 7976.2 834.5Q8044.2 707.0 8044.2 540.0Q8044.2 373.0 7976.2 245.5Q7908.2 118.0 7786.7 46.5Q7665.2 -25.0 7507.2 -25.0ZM7507.2 163.0Q7634.2 163.0 7708.2 264.5Q7782.2 366.0 7782.2 540.0Q7782.2 715.0 7708.2 816.0Q7634.2 917.0 7507.2 917.0Q7379.2 917.0 7305.7 816.0Q7232.2 715.0 7232.2 540.0Q7232.2 366.0 7305.7 264.5Q7379.2 163.0 7507.2 163.0Z M8416.6 0.0Q8317.6 0.0 8259.6 52.5Q8201.6 105.0 8201.6 197.0V1500.0H8449.6V244.0Q8449.6 210.0 8459.1 199.0Q8468.6 188.0 8499.6 188.0H8590.6V0.0Z"/>
+        <path class="dot" d="M2239.6 -26.0Q2147.6 -26.0 2090.6 31.0Q2033.6 88.0 2033.6 180.0Q2033.6 272.0 2090.6 328.5Q2147.6 385.0 2239.6 385.0Q2331.6 385.0 2388.1 328.5Q2444.6 272.0 2444.6 180.0Q2444.6 88.0 2388.1 31.0Q2331.6 -26.0 2239.6 -26.0ZM2239.6 695.0Q2147.6 695.0 2090.6 752.0Q2033.6 809.0 2033.6 901.0Q2033.6 993.0 2090.6 1049.5Q2147.6 1106.0 2239.6 1106.0Q2331.6 1106.0 2388.1 1049.5Q2444.6 993.0 2444.6 901.0Q2444.6 809.0 2388.1 752.0Q2331.6 695.0 2239.6 695.0Z"/>
+      </g>
+    </svg></div>
+  <nav aria-label="Rechtliches">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+</footer>
+
+</div>
+</body>
+</html>
