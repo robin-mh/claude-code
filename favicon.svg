@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1415 1415" role="img" aria-label="re:school">
   <g transform="translate(396.0 1247.5) scale(1 -1)">
-    <rect x="-396" y="-167.5" width="1415" height="1415" rx="226.4" fill="#151E27"/>
-    <circle cx="311.5" cy="900.5" r="205.5" fill="#3FA79B"/>
-    <circle cx="311.5" cy="179.5" r="205.5" fill="#3FA79B"/>
+    <rect x="-396" y="-167.5" width="1415" height="1415" rx="226.4" fill="#0E1330"/>
+    <circle cx="311.5" cy="900.5" r="205.5" fill="#D9A441"/>
+    <circle cx="311.5" cy="179.5" r="205.5" fill="#D9A441"/>
   </g>
 </svg>
