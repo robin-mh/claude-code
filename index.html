@@ -15,8 +15,6 @@
     src: url(schriften/schibsted-grotesk-400.woff2) format("woff2"); }
   @font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 600; font-display: swap;
     src: url(schriften/schibsted-grotesk-600.woff2) format("woff2"); }
-  @font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 700; font-display: swap;
-    src: url(schriften/schibsted-grotesk-700.woff2) format("woff2"); }
   @font-face { font-family: "Source Serif 4"; font-style: normal; font-weight: 400; font-display: swap;
     src: url(schriften/source-serif-4-400.woff2) format("woff2"); }
   @font-face { font-family: "Source Serif 4"; font-style: normal; font-weight: 600; font-display: swap;
@@ -93,19 +91,6 @@
   .wortmarke .dot { fill: var(--akzent); }
   .wortmarke.einfarbig .ink, .wortmarke.einfarbig .dot { fill: var(--ink); }
 
-  /* ---------- Betreffzeile, Fassung A ----------
-     Linienstärke und Abstand sind ein halber Punktdurchmesser, also .1em.
-     Dadurch wächst die Linie mit der Schriftgröße mit, ohne Nachmessen. */
-  .bt {
-    display: inline-flex; align-items: baseline; gap: .38em;
-    max-width: 100%;
-    font-family: var(--f-display); letter-spacing: -.02em; line-height: 1.24;
-    border-bottom: .1em solid var(--ink); padding-bottom: .1em;
-  }
-  .bt .re { font-weight: 600; flex: none; }
-  .bt .re b { color: var(--akzent); font-weight: 700; }
-  .bt .tp { font-weight: 400; min-width: 0; }
-
   /* ---------- Einstieg ---------- */
   .einstieg { padding: 56px 0 0; }
   .marke-gross { max-width: 300px; }
@@ -114,15 +99,8 @@
     margin-top: 9px; max-width: 300px;
   }
 
-  .betreffs {
-    list-style: none; margin: 52px 0 0; padding: 0;
-    display: flex; flex-direction: column; align-items: flex-start; gap: 18px;
-  }
-  .betreffs .bt { font-size: clamp(21px, 4.4vw, 40px); }
-  .betreffs li:last-child .bt .tp { color: var(--ink-soft); }
-
   .einstieg-fuss {
-    margin-top: 52px; padding-top: 34px; border-top: 1px solid var(--rule);
+    margin-top: 40px; padding-top: 34px; border-top: 1px solid var(--rule);
     display: grid; gap: 30px;
   }
   @media (min-width: 900px) { .einstieg-fuss { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; } }
@@ -237,12 +215,6 @@
     </svg></h1>
     <p class="claim">reflect. rethink. reorganise.</p>
 
-    <ul class="betreffs">
-      <li><span class="bt"><span class="re">re<b>:</b></span><span class="tp">Krankenstände</span></span></li>
-      <li><span class="bt"><span class="re">re<b>:</b></span><span class="tp">Rollenklarheit</span></span></li>
-      <li><span class="bt"><span class="re">re<b>:</b></span><span class="tp">Elterngespräch</span></span></li>
-      <li><span class="bt"><span class="re">re<b>:</b></span><span class="tp">Ihr Thema an der Schule</span></span></li>
-    </ul>
 
     <div class="einstieg-fuss">
       <p class="lede">Supervision und Coaching für Schulen und Kindergärten: für Einrichtungen, die Gruppen- oder Teamsupervision buchen möchten, und für Direktor:innen, Pädagogische Leitungen und mittleres Management, die Coaching suchen. Wir begleiten Sie dabei, den Arbeitsalltag mit Abstand zu betrachten, gemeinsam zu reflektieren und neue Handlungsmöglichkeiten zu entwickeln.</p>
