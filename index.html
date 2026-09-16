@@ -73,6 +73,13 @@
   a:hover { text-decoration-thickness: 2px; }
   :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 1px; }
 
+  /* Kleine Auszeichnung in der Schreibmaschinenschrift, wie im Markenhandbuch.
+     Diese vier Zeilen stehen NICHT in inhalte.md, sie sind am 16.09. freigegeben worden. */
+  .eyebrow {
+    font-family: var(--f-mono); font-size: 11.5px; font-weight: 400;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
+  }
+
   .sprung {
     position: absolute; left: -9999px;
     background: var(--ink); color: var(--paper);
@@ -134,7 +141,7 @@
 
   /* ---------- Abschnitte ---------- */
   section { margin-top: 92px; }
-  .sec-kopf { padding-bottom: 18px; border-bottom: 1px solid var(--ink); }
+  .sec-kopf { display: flex; flex-direction: column; gap: 10px; padding-bottom: 18px; border-bottom: 1px solid var(--ink); }
 
   /* ---------- Angebote ---------- */
   .angebot { margin-top: 46px; padding-top: 26px; border-top: 1px solid var(--rule); }
@@ -249,6 +256,7 @@
 
   <section id="angebote">
     <div class="sec-kopf">
+      <p class="eyebrow">Drei Wege</p>
       <h2>Angebote</h2>
     </div>
 
@@ -342,6 +350,7 @@
 
   <section id="haltung">
     <div class="sec-kopf">
+      <p class="eyebrow">Wie wir arbeiten</p>
       <h2>Haltung</h2>
     </div>
     <ul class="haltung">
@@ -353,6 +362,7 @@
 
   <section id="personen">
     <div class="sec-kopf">
+      <p class="eyebrow">Wer begleitet</p>
       <h2>Wer wir sind</h2>
     </div>
     <div class="personen">
@@ -373,6 +383,7 @@
 
   <section id="kontakt">
     <div class="sec-kopf">
+      <p class="eyebrow">So erreichen Sie uns</p>
       <h2>Kontakt</h2>
     </div>
     <dl class="kontakt">
