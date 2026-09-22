@@ -23,6 +23,7 @@
     --tinte:  #0E1330;
     --rosa:   #CBA8AC;
     --gruen:  #E0DC84;
+    --blau:   #A9BDC4;
     --linie:  rgba(14, 19, 48, .22);
 
     --grund: var(--creme);
@@ -51,7 +52,10 @@
   .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 20px; }
   @media (min-width: 620px) { .wrap { padding-inline: 40px; } }
 
-  h1, h2, h3 { font-weight: 700; margin: 0; letter-spacing: -.03em; text-wrap: balance; }
+  h1, h2, h3 {
+    font-weight: 700; margin: 0; letter-spacing: -.03em; text-wrap: balance;
+    overflow-wrap: break-word; hyphens: auto;
+  }
   h1 { font-size: clamp(40px, 8.4vw, 96px); line-height: 1.02; }
   h2 { font-size: clamp(32px, 6.2vw, 64px); line-height: 1.06; }
   h3 { font-size: clamp(25px, 4.2vw, 38px); line-height: 1.1; }
@@ -127,11 +131,12 @@
 
   /* ---------- Angebote ---------- */
   .karten { display: grid; gap: 20px; align-items: start; }
-  @media (min-width: 1000px) { .karten { grid-template-columns: 1fr 1fr; } .karte:last-child { grid-column: 1 / -1; } }
-  .karte { background: var(--grund); color: var(--text); padding: clamp(28px, 3.6vw, 48px); }
+  @media (min-width: 1000px) { .karten { grid-template-columns: 1fr 1fr; } }
+  .karte { background: var(--grund); color: var(--text); padding: clamp(28px, 3.6vw, 48px); min-width: 0; }
   .karte-ocker { --grund: var(--ocker); }
   .karte-gruen { --grund: var(--gruen); }
   .karte-rosa  { --grund: var(--rosa); }
+  .karte-blau  { --grund: var(--blau); }
   .karte .nr { font-weight: 700; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
   .karte h3 { margin-top: 10px; }
   .karte .text { margin-top: 20px; max-width: var(--messe); }
@@ -141,9 +146,6 @@
   }
   .karte ul { margin: 0; padding-left: 1.1em; }
   .karte li { margin-bottom: 1px; }
-  @media (min-width: 1000px) {
-    .karte:last-child .innen { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; align-items: start; }
-  }
 
   dl { margin: 0; }
   dl div { display: grid; gap: 0 16px; padding: 9px 0; border-bottom: 1px solid var(--linie); }
@@ -152,6 +154,12 @@
   dt { font-weight: 700; font-size: 15px; }
   dd { margin: 0; font-size: 16px; }
   .kosten { margin-top: 18px; padding-top: 16px; border-top: 1.5px solid currentColor; font-weight: 700; font-size: 16px; }
+
+  .status {
+    display: inline-block; background: var(--tinte); color: var(--creme);
+    font-weight: 700; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase;
+    padding: 5px 10px; margin-left: 10px; white-space: nowrap;
+  }
 
   .fussnote { margin-top: 24px; padding-left: 18px; border-left: 3px solid currentColor; max-width: var(--messe); }
 
@@ -197,7 +205,7 @@
   @media (min-width: 920px) { .kontakt-raster { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; } }
 
   /* ---------- Offene Stellen ---------- */
-  .offen {
+  .offen, .entwurf {
     display: inline-block; font-weight: 700; font-size: 13.5px;
     border-left: 3px solid currentColor; padding: 3px 0 3px 13px;
     line-height: 1.35; opacity: .75;
@@ -248,7 +256,7 @@
   <section class="band band-creme" id="angebote">
     <div class="wrap">
       <div class="kopf">
-        <p class="marke">Drei Wege</p>
+        <p class="marke">Vier Wege</p>
         <h2>Angebote</h2>
       </div>
 
@@ -291,30 +299,47 @@
         <article class="karte karte-rosa">
           <p class="nr">03</p>
           <h3>Coaching für Führungskräfte</h3>
-          <div class="innen">
-            <div>
-              <p class="text">Führung in Schule und Kindergarten heißt oft, viele Erwartungen gleichzeitig zu halten. Im Einzelcoaching arbeiten Sie an Ihrer Führungsrolle: in wenigen Sitzungen zu einem konkreten Anliegen, etwa einem schwierigen Gespräch, oder als längere Begleitung beim Einstieg in eine neue Funktion. Sie bestimmen die Themen, wir strukturieren den Prozess. Inhalte bleiben vertraulich, auch gegenüber Auftraggeber:innen.</p>
-              <h4>Für wen</h4>
-              <ul>
-                <li>Direktor:innen</li>
-                <li>Pädagogische Leitungen</li>
-                <li>Kindergartenleitungen</li>
-                <li>Koordinator:innen</li>
-                <li>Fachbereichs- und Abteilungsleitungen</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Format</h4>
-              <dl>
-                <div><dt>Setting</dt><dd>Einzelcoaching mit Katharina Obererlacher oder Robin Heinecke</dd></div>
-                <div><dt>Formen</dt><dd>Kurzcoaching zu einem Anliegen oder Begleitung in einer neuen Rolle</dd></div>
-                <div><dt>Dauer je Einheit</dt><dd>45 oder 90 Minuten</dd></div>
-                <div><dt>Rhythmus</dt><dd>nach Bedarf</dd></div>
-                <div><dt>Ort</dt><dd>vor Ort, extern (z. B. im Education Lab) oder online</dd></div>
-              </dl>
-              <p class="kosten">Kosten: Erstgespräch kostenlos, danach auf Anfrage</p>
-            </div>
-          </div>
+          <p class="text">Führung in Schule und Kindergarten heißt oft, viele Erwartungen gleichzeitig zu halten. Im Einzelcoaching arbeiten Sie an Ihrer Führungsrolle: in wenigen Sitzungen zu einem konkreten Anliegen, etwa einem schwierigen Gespräch, oder als längere Begleitung beim Einstieg in eine neue Funktion. Sie bestimmen die Themen, wir strukturieren den Prozess. Inhalte bleiben vertraulich, auch gegenüber Auftraggeber:innen.</p>
+          <h4>Für wen</h4>
+          <ul>
+            <li>Direktor:innen</li>
+            <li>Pädagogische Leitungen</li>
+            <li>Kindergartenleitungen</li>
+            <li>Koordinator:innen</li>
+            <li>Fachbereichs- und Abteilungsleitungen</li>
+          </ul>
+          <h4>Format</h4>
+          <dl>
+            <div><dt>Setting</dt><dd>Einzelcoaching mit Katharina Obererlacher oder Robin Heinecke</dd></div>
+            <div><dt>Formen</dt><dd>Kurzcoaching zu einem Anliegen oder Begleitung in einer neuen Rolle</dd></div>
+            <div><dt>Dauer je Einheit</dt><dd>45 oder 90 Minuten</dd></div>
+            <div><dt>Rhythmus</dt><dd>nach Bedarf</dd></div>
+            <div><dt>Ort</dt><dd>vor Ort, extern (z. B. im Education Lab) oder online</dd></div>
+          </dl>
+          <p class="kosten">Kosten: Erstgespräch kostenlos, danach auf Anfrage</p>
+        </article>
+
+        <article class="karte karte-blau">
+          <p class="nr">04 <span class="status">Ab 2027</span></p>
+          <h3>Organisations&shy;entwicklung</h3>
+          <p class="text">Schulen und Kindergärten verändern sich: neue Aufgaben, wechselnde Teams, Vorgaben von außen. Organisationsentwicklung setzt nicht bei einzelnen Personen an, sondern bei den Strukturen — wer entscheidet was, wie laufen die Abläufe, wo hakt die Zusammenarbeit zwischen Gruppen. Wir arbeiten mit Leitung und Kollegium an einem Vorhaben, das die Einrichtung selbst benennt. Der Weg dorthin wird in Etappen geplant, überprüft und angepasst.</p>
+          <h4>Für wen</h4>
+          <ul>
+            <li>Schulen und Kindergärten als ganze Einrichtung</li>
+            <li>Leitungsteams</li>
+            <li>Schulerhalter und Träger</li>
+          </ul>
+          <h4>Format</h4>
+          <dl>
+            <div><dt>Zusammensetzung</dt><dd>Leitung, Kollegium und je nach Vorhaben weitere Beteiligte</dd></div>
+            <div><dt>Ablauf</dt><dd>Auftragsklärung, Bestandsaufnahme, Umsetzung in Etappen, Rückblick</dd></div>
+            <div><dt>Dauer</dt><dd>mehrere Termine über ein Schuljahr, Umfang nach Auftrag</dd></div>
+            <div><dt>Begleitung</dt><dd>in der Regel zu zweit</dd></div>
+            <div><dt>Ort</dt><dd>vor Ort in der Einrichtung</dd></div>
+            <div><dt>Ab wann</dt><dd>Erstgespräche ab Frühjahr 2027, Umsetzung ab Herbst 2027</dd></div>
+          </dl>
+          <p class="kosten">Kosten: Erstgespräch kostenlos, danach auf Anfrage</p>
+          <p style="margin-top:22px"><span class="entwurf">Text von Claude entworfen, nicht aus inhalte.md — bitte prüfen</span></p>
         </article>
       </div>
     </div>
